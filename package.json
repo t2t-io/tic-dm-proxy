@@ -1,0 +1,33 @@
+{
+  "name": "tic-dm-proxy",
+  "author": {
+    "name": "yagamy",
+    "email": "yagamy@t2t.io"
+  },
+  "description": "DM Proxy Server used in Production line",
+  "version": "0.0.1",
+  "repository": {
+    "type": "git",
+    "url": ""
+  },
+  "engines": {
+    "node": "4.4.x"
+  },
+  "scripts": {},
+  "dependencies": {
+    "colors": "*",
+    "request": "*",
+    "express": "*",
+    "yargs": "*",
+    "mdns": "*",
+    "body-parser": "*"
+  },
+  "devDependencies": {},
+  "optionalDependencies": {},
+  "keywords": [
+    "tic",
+    "dm",
+    "registry"
+  ],
+  "license": "MIT"
+}
