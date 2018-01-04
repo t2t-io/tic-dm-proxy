@@ -54,17 +54,20 @@ app.post '/api/v3/nodes/:profile/create-production-node/:serial_number', (req, r
   {params, body} = req
   {profile, serial_number} = params
   {device, version, macaddr_eth, macaddr_usb, macaddr_wlan} = body
+  url = "/api/v3/nodes/#{profile}/create-production-node/#{serial_number}"
+  console.log "toe => proxy: #{url.cyan}, body: #{(JSON.stringify body)}"
   return res.status 404 .send "profile #{profile} is unacceptable" .end! unless profile in profiles
   batch = batch-number
   opts =
-    url: "#{argv.server}/api/v3/nodes/#{profile}/create-production-node/#{serial_number}"
+    url: "#{argv.server}#{url}"
     method: \POST
     auth: {user, password}
     json: yes
     body: {device, version, macaddr_eth, macaddr_usb, macaddr_wlan, batch}
+  console.log "proxy => tic: #{url.cyan}, user: #{user.yellow}, body: #{(JSON.stringify opts.body).green}"
   (err, rsp, body) <- request opts
   return res.status 400 .send "err: #{err}" .end! if err?
-  console.log "body: #{JSON.stringify body}"
+  console.log "proxy <= tic: #{url.cyan}, body: #{(JSON.stringify body).magenta}"
   return res.status rsp.statusCode .json body .end!
 
 server = http.createServer app
