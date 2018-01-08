@@ -26,7 +26,7 @@ author:
 
 description: 'DM Proxy Server used in Production line'
 
-version: \0.0.1
+version: \0.0.2
 
 repository:
   type: \git
